@@ -27,5 +27,6 @@
 
 - (void) changeToSettings;
 - (void) changeToMap;
+- (float) getDistance:(float)loc1Lat loc1Long:(float)loc1Long loc2Lat:(float)loc2Lat  loc2Long:(float)loc2Long;
 
 @end

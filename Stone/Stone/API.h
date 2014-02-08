@@ -13,8 +13,15 @@
 @interface API : NSObject
 
 + (NSData*) getMarkers:(NSString*)url location:(CLLocation*)loc radiusInFeet:(float)feet;
-+ (NSData*) getMarker:(NSString*)url id:(NSString*)ID;
-+ (NSData*) postMarker:(NSString*)url message:(NSString*)msg location:(CLLocation*)loc username:(NSString*)user;
++ (NSData*) postMarker:(NSString*)url message:(NSString*)msg location:(CLLocation*)loc username:(NSString*)user recipient:(NSString*)rec;
 + (NSData*) vote:(NSString*)url id:(NSString*)ID amount:(NSInteger)amt dir:(NSInteger)dir;
+
+//friends
++ (NSData*) createName:(NSString*)url name:(NSString*)name;
++ (NSData*) updateName:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName;
++ (NSData*) lookup:(NSString*)url lookupName:(NSString*)displayName;
++ (NSData*) addFriend:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName;
++ (NSData*) delFriend:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName;
++ (NSData*) getFriends:(NSString*)url uid:(NSInteger)uid;
 
 @end

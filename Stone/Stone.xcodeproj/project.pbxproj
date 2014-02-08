@@ -15,7 +15,6 @@
 		9F79355418A5E322001C8901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355318A5E322001C8901 /* main.m */; };
 		9F79355818A5E322001C8901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355718A5E322001C8901 /* AppDelegate.m */; };
 		9F79355E18A5E322001C8901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355D18A5E322001C8901 /* ViewController.m */; };
-		9F79356018A5E322001C8901 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F79355F18A5E322001C8901 /* Images.xcassets */; };
 		9F79358418A5E541001C8901 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358318A5E541001C8901 /* GoogleMaps.framework */; };
 		9F79358618A5E57C001C8901 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F79358518A5E57C001C8901 /* GoogleMaps.bundle */; };
 		9F79358818A5E5F7001C8901 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358718A5E5F7001C8901 /* AVFoundation.framework */; };
@@ -30,11 +29,13 @@
 		9F79359A18A5E630001C8901 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359918A5E630001C8901 /* OpenGLES.framework */; };
 		9F79359C18A5E635001C8901 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359B18A5E635001C8901 /* QuartzCore.framework */; };
 		9F79359E18A5E63F001C8901 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */; };
+		9F79EFCB18A6BF2800246118 /* Stone_logo58.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F79EFC818A6BF2800246118 /* Stone_logo58.png */; };
+		9F79EFCC18A6BF2800246118 /* Stone_logo80.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F79EFC918A6BF2800246118 /* Stone_logo80.png */; };
+		9F79EFCD18A6BF2800246118 /* Stone_logo120.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F79EFCA18A6BF2800246118 /* Stone_logo120.png */; };
 		9FC0E0AA18A603DB00180920 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0A918A603DB00180920 /* LeftViewController.m */; };
 		9FC0E0AD18A6046400180920 /* APIKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0AC18A6046400180920 /* APIKey.m */; };
 		9FC0E0B218A652E000180920 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0B118A652E000180920 /* API.m */; };
 		9FC0E0B518A65BBA00180920 /* Marker.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0B418A65BBA00180920 /* Marker.m */; };
-		9FC0E0B718A6B4F700180920 /* Stone_logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 9FC0E0B618A6B4F700180920 /* Stone_logo.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,7 +53,6 @@
 		9F79355718A5E322001C8901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9F79355C18A5E322001C8901 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9F79355D18A5E322001C8901 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		9F79355F18A5E322001C8901 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9F79356618A5E322001C8901 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		9F79358318A5E541001C8901 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		9F79358518A5E57C001C8901 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
@@ -68,6 +68,9 @@
 		9F79359918A5E630001C8901 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9F79359B18A5E635001C8901 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9F79EFC818A6BF2800246118 /* Stone_logo58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo58.png; sourceTree = "<group>"; };
+		9F79EFC918A6BF2800246118 /* Stone_logo80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo80.png; sourceTree = "<group>"; };
+		9F79EFCA18A6BF2800246118 /* Stone_logo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo120.png; sourceTree = "<group>"; };
 		9FC0E0A818A603DB00180920 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		9FC0E0A918A603DB00180920 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		9FC0E0AB18A6046400180920 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
@@ -76,7 +79,6 @@
 		9FC0E0B118A652E000180920 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		9FC0E0B318A65BBA00180920 /* Marker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Marker.h; path = ../Marker.h; sourceTree = "<group>"; };
 		9FC0E0B418A65BBA00180920 /* Marker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Marker.m; path = ../Marker.m; sourceTree = "<group>"; };
-		9FC0E0B618A6B4F700180920 /* Stone_logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,7 +156,6 @@
 		9F79354D18A5E322001C8901 /* Stone */ = {
 			isa = PBXGroup;
 			children = (
-				9FC0E0B618A6B4F700180920 /* Stone_logo.png */,
 				9FC0E0B318A65BBA00180920 /* Marker.h */,
 				9FC0E0B418A65BBA00180920 /* Marker.m */,
 				9F79354E18A5E322001C8901 /* Supporting Files */,
@@ -164,7 +165,6 @@
 				9FC0E0A918A603DB00180920 /* LeftViewController.m */,
 				9F79355C18A5E322001C8901 /* ViewController.h */,
 				9F79355D18A5E322001C8901 /* ViewController.m */,
-				9F79355F18A5E322001C8901 /* Images.xcassets */,
 				9FC0E0AB18A6046400180920 /* APIKey.h */,
 				9FC0E0AC18A6046400180920 /* APIKey.m */,
 				9FC0E0B018A652E000180920 /* API.h */,
@@ -176,6 +176,9 @@
 		9F79354E18A5E322001C8901 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9F79EFC818A6BF2800246118 /* Stone_logo58.png */,
+				9F79EFC918A6BF2800246118 /* Stone_logo80.png */,
+				9F79EFCA18A6BF2800246118 /* Stone_logo120.png */,
 				9F79354F18A5E322001C8901 /* Stone-Info.plist */,
 				9F79355018A5E322001C8901 /* InfoPlist.strings */,
 				9F79355318A5E322001C8901 /* main.m */,
@@ -238,10 +241,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F79EFCB18A6BF2800246118 /* Stone_logo58.png in Resources */,
+				9F79EFCD18A6BF2800246118 /* Stone_logo120.png in Resources */,
 				9F79358618A5E57C001C8901 /* GoogleMaps.bundle in Resources */,
-				9F79356018A5E322001C8901 /* Images.xcassets in Resources */,
-				9FC0E0B718A6B4F700180920 /* Stone_logo.png in Resources */,
 				9F79355218A5E322001C8901 /* InfoPlist.strings in Resources */,
+				9F79EFCC18A6BF2800246118 /* Stone_logo80.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
