@@ -21,6 +21,9 @@
 @property (nonatomic, strong) NSString *profileName;
 @property (nonatomic, strong) UIAlertView *profileNameChange;
 @property (nonatomic, strong) NSString *url;
+@property (nonatomic, strong) NSMutableArray *arrMark;
+@property (nonatomic, strong) UIAlertView *chooseMark;
+@property (nonatomic, strong) NSMutableArray *tempArr;
 
 - (void) changeToSettings;
 - (void) changeToMap;
