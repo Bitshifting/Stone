@@ -8,7 +8,9 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "ECSlidingViewController.h"
 #import <GoogleMaps/GoogleMaps.h>
+#import "APIKey.h"
 
 @implementation AppDelegate
 
@@ -17,7 +19,8 @@
     // Override point for customization after application launch.
     
     //add google maps api
-    [GMSServices provideAPIKey:@"AIzaSyBUXucvwTK2KSsqtCbXlFQYc2REHWFoMLs"];
+    APIKey *key = [[APIKey alloc] init];
+    [GMSServices provideAPIKey:key.key];
     
     ViewController *vc = [[ViewController alloc] init];
     

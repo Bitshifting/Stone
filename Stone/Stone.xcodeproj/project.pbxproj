@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2FCCDFA886774AD18B9A3D41 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5437D862A21B4DEB866B8760 /* libPods.a */; };
 		9F79354818A5E322001C8901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79354718A5E322001C8901 /* Foundation.framework */; };
 		9F79354A18A5E322001C8901 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79354918A5E322001C8901 /* CoreGraphics.framework */; };
 		9F79354C18A5E322001C8901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79354B18A5E322001C8901 /* UIKit.framework */; };
@@ -30,9 +31,13 @@
 		9F79359A18A5E630001C8901 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359918A5E630001C8901 /* OpenGLES.framework */; };
 		9F79359C18A5E635001C8901 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359B18A5E635001C8901 /* QuartzCore.framework */; };
 		9F79359E18A5E63F001C8901 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */; };
+		9FC0E0AA18A603DB00180920 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0A918A603DB00180920 /* LeftViewController.m */; };
+		9FC0E0AD18A6046400180920 /* APIKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0AC18A6046400180920 /* APIKey.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5437D862A21B4DEB866B8760 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		633CF65026184FCA98DFBE82 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		9F79354418A5E322001C8901 /* Stone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F79354718A5E322001C8901 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9F79354918A5E322001C8901 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -63,6 +68,10 @@
 		9F79359918A5E630001C8901 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
 		9F79359B18A5E635001C8901 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9FC0E0A818A603DB00180920 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
+		9FC0E0A918A603DB00180920 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
+		9FC0E0AB18A6046400180920 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
+		9FC0E0AC18A6046400180920 /* APIKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APIKey.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +95,7 @@
 				9F79354C18A5E322001C8901 /* UIKit.framework in Frameworks */,
 				9F79358418A5E541001C8901 /* GoogleMaps.framework in Frameworks */,
 				9F79354818A5E322001C8901 /* Foundation.framework in Frameworks */,
+				2FCCDFA886774AD18B9A3D41 /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -98,6 +108,7 @@
 				9F79354D18A5E322001C8901 /* Stone */,
 				9F79354618A5E322001C8901 /* Frameworks */,
 				9F79354518A5E322001C8901 /* Products */,
+				633CF65026184FCA98DFBE82 /* Pods.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -130,6 +141,7 @@
 				9F79354918A5E322001C8901 /* CoreGraphics.framework */,
 				9F79354B18A5E322001C8901 /* UIKit.framework */,
 				9F79356618A5E322001C8901 /* XCTest.framework */,
+				5437D862A21B4DEB866B8760 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -140,11 +152,15 @@
 				9F79354E18A5E322001C8901 /* Supporting Files */,
 				9F79355618A5E322001C8901 /* AppDelegate.h */,
 				9F79355718A5E322001C8901 /* AppDelegate.m */,
+				9FC0E0A818A603DB00180920 /* LeftViewController.h */,
+				9FC0E0A918A603DB00180920 /* LeftViewController.m */,
 				9F79355C18A5E322001C8901 /* ViewController.h */,
 				9F79355D18A5E322001C8901 /* ViewController.m */,
 				9F79355F18A5E322001C8901 /* Images.xcassets */,
 				9F79357C18A5E46E001C8901 /* MainView.h */,
 				9F79357D18A5E46E001C8901 /* MainView.m */,
+				9FC0E0AB18A6046400180920 /* APIKey.h */,
+				9FC0E0AC18A6046400180920 /* APIKey.m */,
 			);
 			path = Stone;
 			sourceTree = "<group>";
@@ -167,9 +183,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9F79357618A5E322001C8901 /* Build configuration list for PBXNativeTarget "Stone" */;
 			buildPhases = (
+				02FA6295FA36426EB5A3720B /* Check Pods Manifest.lock */,
 				9F79354018A5E322001C8901 /* Sources */,
 				9F79354118A5E322001C8901 /* Frameworks */,
 				9F79354218A5E322001C8901 /* Resources */,
+				74A0B24EE5E84AD09329A575 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -220,12 +238,47 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		02FA6295FA36426EB5A3720B /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		74A0B24EE5E84AD09329A575 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		9F79354018A5E322001C8901 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FC0E0AD18A6046400180920 /* APIKey.m in Sources */,
 				9F79355E18A5E322001C8901 /* ViewController.m in Sources */,
+				9FC0E0AA18A603DB00180920 /* LeftViewController.m in Sources */,
 				9F79357E18A5E46E001C8901 /* MainView.m in Sources */,
 				9F79355818A5E322001C8901 /* AppDelegate.m in Sources */,
 				9F79355418A5E322001C8901 /* main.m in Sources */,
@@ -320,6 +373,7 @@
 		};
 		9F79357718A5E322001C8901 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633CF65026184FCA98DFBE82 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -331,7 +385,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stone/Stone-Prefix.pch";
 				INFOPLIST_FILE = "Stone/Stone-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -339,6 +396,7 @@
 		};
 		9F79357818A5E322001C8901 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 633CF65026184FCA98DFBE82 /* Pods.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -350,7 +408,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stone/Stone-Prefix.pch";
 				INFOPLIST_FILE = "Stone/Stone-Info.plist";
-				OTHER_LDFLAGS = "-ObjC";
+				OTHER_LDFLAGS = (
+					"-ObjC",
+					"$(inherited)",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -375,6 +436,7 @@
 				9F79357818A5E322001C8901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
