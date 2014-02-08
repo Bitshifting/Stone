@@ -7,12 +7,26 @@
 //
 
 #import "AppDelegate.h"
+#import "ViewController.h"
+#import <GoogleMaps/GoogleMaps.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    
+    //add google maps api
+    [GMSServices provideAPIKey:@"AIzaSyBUXucvwTK2KSsqtCbXlFQYc2REHWFoMLs"];
+    
+    ViewController *vc = [[ViewController alloc] init];
+    
+    [self.window setRootViewController:vc];
+    [self.window makeKeyAndVisible];
+    
+    
+    
+    
     return YES;
 }
 							

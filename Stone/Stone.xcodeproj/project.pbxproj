@@ -13,23 +13,24 @@
 		9F79355218A5E322001C8901 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9F79355018A5E322001C8901 /* InfoPlist.strings */; };
 		9F79355418A5E322001C8901 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355318A5E322001C8901 /* main.m */; };
 		9F79355818A5E322001C8901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355718A5E322001C8901 /* AppDelegate.m */; };
-		9F79355B18A5E322001C8901 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9F79355918A5E322001C8901 /* Main.storyboard */; };
 		9F79355E18A5E322001C8901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355D18A5E322001C8901 /* ViewController.m */; };
 		9F79356018A5E322001C8901 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F79355F18A5E322001C8901 /* Images.xcassets */; };
-		9F79356718A5E322001C8901 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79356618A5E322001C8901 /* XCTest.framework */; };
-		9F79356818A5E322001C8901 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79354718A5E322001C8901 /* Foundation.framework */; };
-		9F79356918A5E322001C8901 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79354B18A5E322001C8901 /* UIKit.framework */; };
+		9F79357E18A5E46E001C8901 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79357D18A5E46E001C8901 /* MainView.m */; };
+		9F79358418A5E541001C8901 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358318A5E541001C8901 /* GoogleMaps.framework */; };
+		9F79358618A5E57C001C8901 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F79358518A5E57C001C8901 /* GoogleMaps.bundle */; };
+		9F79358818A5E5F7001C8901 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358718A5E5F7001C8901 /* AVFoundation.framework */; };
+		9F79358A18A5E5FE001C8901 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358918A5E5FE001C8901 /* CoreData.framework */; };
+		9F79358C18A5E604001C8901 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358B18A5E604001C8901 /* CoreLocation.framework */; };
+		9F79358E18A5E60A001C8901 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358D18A5E60A001C8901 /* CoreText.framework */; };
+		9F79359018A5E610001C8901 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358F18A5E610001C8901 /* GLKit.framework */; };
+		9F79359218A5E619001C8901 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359118A5E619001C8901 /* ImageIO.framework */; };
+		9F79359418A5E61E001C8901 /* libc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359318A5E61E001C8901 /* libc++.dylib */; };
+		9F79359618A5E624001C8901 /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359518A5E624001C8901 /* libicucore.dylib */; };
+		9F79359818A5E62B001C8901 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359718A5E62A001C8901 /* libz.dylib */; };
+		9F79359A18A5E630001C8901 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359918A5E630001C8901 /* OpenGLES.framework */; };
+		9F79359C18A5E635001C8901 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359B18A5E635001C8901 /* QuartzCore.framework */; };
+		9F79359E18A5E63F001C8901 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		9F79356A18A5E322001C8901 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9F79353C18A5E322001C8901 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9F79354318A5E322001C8901;
-			remoteInfo = Stone;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		9F79354418A5E322001C8901 /* Stone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stone.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -42,12 +43,26 @@
 		9F79355518A5E322001C8901 /* Stone-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Stone-Prefix.pch"; sourceTree = "<group>"; };
 		9F79355618A5E322001C8901 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9F79355718A5E322001C8901 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		9F79355A18A5E322001C8901 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9F79355C18A5E322001C8901 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		9F79355D18A5E322001C8901 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9F79355F18A5E322001C8901 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		9F79356518A5E322001C8901 /* StoneTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StoneTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9F79356618A5E322001C8901 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		9F79357C18A5E46E001C8901 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
+		9F79357D18A5E46E001C8901 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
+		9F79358318A5E541001C8901 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
+		9F79358518A5E57C001C8901 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
+		9F79358718A5E5F7001C8901 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9F79358918A5E5FE001C8901 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9F79358B18A5E604001C8901 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9F79358D18A5E60A001C8901 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		9F79358F18A5E610001C8901 /* GLKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GLKit.framework; path = System/Library/Frameworks/GLKit.framework; sourceTree = SDKROOT; };
+		9F79359118A5E619001C8901 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		9F79359318A5E61E001C8901 /* libc++.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libc++.dylib"; path = "usr/lib/libc++.dylib"; sourceTree = SDKROOT; };
+		9F79359518A5E624001C8901 /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
+		9F79359718A5E62A001C8901 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		9F79359918A5E630001C8901 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		9F79359B18A5E635001C8901 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,19 +70,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F79359E18A5E63F001C8901 /* SystemConfiguration.framework in Frameworks */,
+				9F79359C18A5E635001C8901 /* QuartzCore.framework in Frameworks */,
+				9F79359A18A5E630001C8901 /* OpenGLES.framework in Frameworks */,
+				9F79359818A5E62B001C8901 /* libz.dylib in Frameworks */,
+				9F79359618A5E624001C8901 /* libicucore.dylib in Frameworks */,
+				9F79359418A5E61E001C8901 /* libc++.dylib in Frameworks */,
+				9F79359218A5E619001C8901 /* ImageIO.framework in Frameworks */,
+				9F79359018A5E610001C8901 /* GLKit.framework in Frameworks */,
+				9F79358E18A5E60A001C8901 /* CoreText.framework in Frameworks */,
+				9F79358C18A5E604001C8901 /* CoreLocation.framework in Frameworks */,
+				9F79358A18A5E5FE001C8901 /* CoreData.framework in Frameworks */,
+				9F79358818A5E5F7001C8901 /* AVFoundation.framework in Frameworks */,
 				9F79354A18A5E322001C8901 /* CoreGraphics.framework in Frameworks */,
 				9F79354C18A5E322001C8901 /* UIKit.framework in Frameworks */,
+				9F79358418A5E541001C8901 /* GoogleMaps.framework in Frameworks */,
 				9F79354818A5E322001C8901 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F79356218A5E322001C8901 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				9F79356718A5E322001C8901 /* XCTest.framework in Frameworks */,
-				9F79356918A5E322001C8901 /* UIKit.framework in Frameworks */,
-				9F79356818A5E322001C8901 /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,7 +105,6 @@
 			isa = PBXGroup;
 			children = (
 				9F79354418A5E322001C8901 /* Stone.app */,
-				9F79356518A5E322001C8901 /* StoneTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -95,6 +112,20 @@
 		9F79354618A5E322001C8901 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				9F79359D18A5E63F001C8901 /* SystemConfiguration.framework */,
+				9F79359B18A5E635001C8901 /* QuartzCore.framework */,
+				9F79359918A5E630001C8901 /* OpenGLES.framework */,
+				9F79359718A5E62A001C8901 /* libz.dylib */,
+				9F79359518A5E624001C8901 /* libicucore.dylib */,
+				9F79359318A5E61E001C8901 /* libc++.dylib */,
+				9F79359118A5E619001C8901 /* ImageIO.framework */,
+				9F79358F18A5E610001C8901 /* GLKit.framework */,
+				9F79358D18A5E60A001C8901 /* CoreText.framework */,
+				9F79358B18A5E604001C8901 /* CoreLocation.framework */,
+				9F79358918A5E5FE001C8901 /* CoreData.framework */,
+				9F79358718A5E5F7001C8901 /* AVFoundation.framework */,
+				9F79358518A5E57C001C8901 /* GoogleMaps.bundle */,
+				9F79358318A5E541001C8901 /* GoogleMaps.framework */,
 				9F79354718A5E322001C8901 /* Foundation.framework */,
 				9F79354918A5E322001C8901 /* CoreGraphics.framework */,
 				9F79354B18A5E322001C8901 /* UIKit.framework */,
@@ -106,13 +137,14 @@
 		9F79354D18A5E322001C8901 /* Stone */ = {
 			isa = PBXGroup;
 			children = (
+				9F79354E18A5E322001C8901 /* Supporting Files */,
 				9F79355618A5E322001C8901 /* AppDelegate.h */,
 				9F79355718A5E322001C8901 /* AppDelegate.m */,
-				9F79355918A5E322001C8901 /* Main.storyboard */,
 				9F79355C18A5E322001C8901 /* ViewController.h */,
 				9F79355D18A5E322001C8901 /* ViewController.m */,
 				9F79355F18A5E322001C8901 /* Images.xcassets */,
-				9F79354E18A5E322001C8901 /* Supporting Files */,
+				9F79357C18A5E46E001C8901 /* MainView.h */,
+				9F79357D18A5E46E001C8901 /* MainView.m */,
 			);
 			path = Stone;
 			sourceTree = "<group>";
@@ -148,24 +180,6 @@
 			productReference = 9F79354418A5E322001C8901 /* Stone.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9F79356418A5E322001C8901 /* StoneTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 9F79357918A5E322001C8901 /* Build configuration list for PBXNativeTarget "StoneTests" */;
-			buildPhases = (
-				9F79356118A5E322001C8901 /* Sources */,
-				9F79356218A5E322001C8901 /* Frameworks */,
-				9F79356318A5E322001C8901 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				9F79356B18A5E322001C8901 /* PBXTargetDependency */,
-			);
-			name = StoneTests;
-			productName = StoneTests;
-			productReference = 9F79356518A5E322001C8901 /* StoneTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -174,11 +188,6 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = "Kenneth Siu";
-				TargetAttributes = {
-					9F79356418A5E322001C8901 = {
-						TestTargetID = 9F79354318A5E322001C8901;
-					};
-				};
 			};
 			buildConfigurationList = 9F79353F18A5E322001C8901 /* Build configuration list for PBXProject "Stone" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -194,7 +203,6 @@
 			projectRoot = "";
 			targets = (
 				9F79354318A5E322001C8901 /* Stone */,
-				9F79356418A5E322001C8901 /* StoneTests */,
 			);
 		};
 /* End PBXProject section */
@@ -204,16 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9F79358618A5E57C001C8901 /* GoogleMaps.bundle in Resources */,
 				9F79356018A5E322001C8901 /* Images.xcassets in Resources */,
 				9F79355218A5E322001C8901 /* InfoPlist.strings in Resources */,
-				9F79355B18A5E322001C8901 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		9F79356318A5E322001C8901 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -225,27 +226,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				9F79355E18A5E322001C8901 /* ViewController.m in Sources */,
+				9F79357E18A5E46E001C8901 /* MainView.m in Sources */,
 				9F79355818A5E322001C8901 /* AppDelegate.m in Sources */,
 				9F79355418A5E322001C8901 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9F79356118A5E322001C8901 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		9F79356B18A5E322001C8901 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9F79354318A5E322001C8901 /* Stone */;
-			targetProxy = 9F79356A18A5E322001C8901 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9F79355018A5E322001C8901 /* InfoPlist.strings */ = {
@@ -254,14 +241,6 @@
 				9F79355118A5E322001C8901 /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		9F79355918A5E322001C8901 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9F79355A18A5E322001C8901 /* Base */,
-			);
-			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -344,9 +323,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Kenneth/Documents/Workspace/Stone/Stone/GoogleMaps-iOS-1.7.0",
+					/Users/Kenneth/Documents/Workspace/Stone/Stone,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stone/Stone-Prefix.pch";
 				INFOPLIST_FILE = "Stone/Stone-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -357,53 +342,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/Kenneth/Documents/Workspace/Stone/Stone/GoogleMaps-iOS-1.7.0",
+					/Users/Kenneth/Documents/Workspace/Stone/Stone,
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Stone/Stone-Prefix.pch";
 				INFOPLIST_FILE = "Stone/Stone-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
-			};
-			name = Release;
-		};
-		9F79357A18A5E322001C8901 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stone.app/Stone";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Stone/Stone-Prefix.pch";
-				GCC_PREPROCESSOR_DEFINITIONS = (
-					"DEBUG=1",
-					"$(inherited)",
-				);
-				INFOPLIST_FILE = "StoneTests/StoneTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
-			};
-			name = Debug;
-		};
-		9F79357B18A5E322001C8901 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Stone.app/Stone";
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(SDKROOT)/Developer/Library/Frameworks",
-					"$(inherited)",
-					"$(DEVELOPER_FRAMEWORKS_DIR)",
-				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "Stone/Stone-Prefix.pch";
-				INFOPLIST_FILE = "StoneTests/StoneTests-Info.plist";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUNDLE_LOADER)";
-				WRAPPER_EXTENSION = xctest;
 			};
 			name = Release;
 		};
@@ -424,14 +373,6 @@
 			buildConfigurations = (
 				9F79357718A5E322001C8901 /* Debug */,
 				9F79357818A5E322001C8901 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-		};
-		9F79357918A5E322001C8901 /* Build configuration list for PBXNativeTarget "StoneTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				9F79357A18A5E322001C8901 /* Debug */,
-				9F79357B18A5E322001C8901 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 		};
