@@ -17,21 +17,19 @@
     NSArray *menuSettings;
 }
 
+@synthesize table;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        menuSettings = [NSArray arrayWithObjects:@"Map", @"Account", nil];
+        menuSettings = [NSArray arrayWithObjects:@"Map", @"Profile Name", nil];
         
         // Custom initialization
-        UITableView *table = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+        table = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
         
-        //remove lines
-        UIView *v = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 10)];
-        v.backgroundColor = [UIColor clearColor];
-        [table setTableHeaderView:v];
-        [table setTableFooterView:v];
+        table.separatorStyle = UITableViewCellSeparatorStyleNone;
         
         table.delegate = self;
         table.dataSource = self;
@@ -64,12 +62,13 @@
         CGFloat topBarOffset = self.topLayoutGuide.length;
         
         // snaps the view under the status bar (iOS 6 style)
-        viewBounds.origin.y = topBarOffset * -1;
+        viewBounds.origin.y = topBarOffset * -2;
         
         // shrink the bounds of your view to compensate for the offset
-        viewBounds.size.height = viewBounds.size.height + (topBarOffset * -1);
+        viewBounds.size.height = viewBounds.size.height + (topBarOffset * -2);
         self.view.bounds = viewBounds;
         self.view.backgroundColor = [UIColor whiteColor];
+        
     }
 }
 
@@ -84,6 +83,7 @@
     }
     
     cell.textLabel.text = [menuSettings objectAtIndex:indexPath.row];
+    
     return cell;
 }
 
@@ -91,11 +91,14 @@
     
     UINavigationController *nav  = (UINavigationController*)self.slidingViewController.topViewController;
     
+    //get main view controller (the top one)
     ViewController *view = (ViewController*)[nav.viewControllers objectAtIndex:0];
     
+    //if clicking map, set it to map
     if(indexPath.row == 0) {
         [view changeToMap];
     }
+    //if clicking settings, go to settings
     if(indexPath.row == 1) {
         [view changeToSettings];
     }

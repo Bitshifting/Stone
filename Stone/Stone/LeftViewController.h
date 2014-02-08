@@ -10,4 +10,6 @@
 
 @interface LeftViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>
 
+@property UITableView *table;
+
 @end

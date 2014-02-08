@@ -28,30 +28,31 @@
     
     //set up top and left view
     topView = [[ViewController alloc] init];
-    LeftViewController *leftView = [[LeftViewController alloc] init];
-    
-    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(anchorLeft)];
     
     topView.navigationItem.title = @"Stone";
-    topView.navigationItem.leftBarButtonItem = anchorLeftButton;
     
     //navigation controller
     _navCont = [[UINavigationController alloc] initWithRootViewController:topView];
     
-    //create left view
-    leftView.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
-    leftView.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom | UIRectEdgeLeft;
+//    LeftViewController *leftView = [[LeftViewController alloc] init];
+
+//    //create left view
+//    leftView.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
+//    leftView.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom | UIRectEdgeLeft;
+//    
+//    //set sliding view controller
+//    self.slidingVC = [ECSlidingViewController slidingWithTopViewController:_navCont];
+//    self.slidingVC.underLeftViewController = nil;
+//    self.slidingVC.underRightViewController = nil;
+//    self.slidingVC.view.backgroundColor = [UIColor whiteColor];
+//    
+//    //enable pan gestures
+//    [_navCont.view addGestureRecognizer:self.slidingVC.panGesture];
+//    
+//    //set how far left view goes
+//    self.slidingVC.anchorRightPeekAmount = 100.0;
     
-    self.slidingVC = [ECSlidingViewController slidingWithTopViewController:_navCont];
-    self.slidingVC.underLeftViewController = leftView;
-    self.slidingVC.underRightViewController = nil;
-    self.slidingVC.view.backgroundColor = [UIColor whiteColor];
-    
-    [_navCont.view addGestureRecognizer:self.slidingVC.panGesture];
-    
-    self.slidingVC.anchorRightPeekAmount = 100.0;
-    
-    [self.window setRootViewController:self.slidingVC];
+    [self.window setRootViewController:_navCont];
     [self.window makeKeyAndVisible];
     
     
