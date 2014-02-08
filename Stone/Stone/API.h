@@ -18,10 +18,10 @@
 
 //friends
 + (NSData*) createName:(NSString*)url name:(NSString*)name;
-+ (NSData*) updateName:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName;
++ (NSData*) updateName:(NSString*)url uid:(NSString*)uid displayName:(NSString*)displayName;
 + (NSData*) lookup:(NSString*)url lookupName:(NSString*)displayName;
-+ (NSData*) addFriend:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName;
-+ (NSData*) delFriend:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName;
-+ (NSData*) getFriends:(NSString*)url uid:(NSInteger)uid;
++ (NSData*) addFriend:(NSString*)url uid:(NSString*)uid displayName:(NSString*)displayName;
++ (NSData*) delFriend:(NSString*)url uid:(NSString*)uid displayName:(NSString*)displayName;
++ (NSData*) getFriends:(NSString*)url uid:(NSString*)uid;
 
 @end

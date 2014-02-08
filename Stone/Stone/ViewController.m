@@ -23,6 +23,8 @@
     GMSMarker *tempMark;
     CLLocation *location;
     NSTimer *time;
+    NSString *uid;
+    NSMutableArray *friendsList;
 }
 
 @synthesize locationManager, insertMsg, removeMark, rateMark, addMark, profileName, profileNameChange, url, arrMark, chooseMark, tempArr;
@@ -79,13 +81,9 @@
     insertMsg.layer.backgroundColor = [[UIColor whiteColor] CGColor];
     insertMsg.frame = CGRectMake(95.0, self.view.bounds.size.height - insertMsg.bounds.size.height - 50, 130.0, 40.0);
     
-    //set profile to default user
-    profileName = @"Jon";
-    
     //initialize array of markers
     arrMark = [[NSMutableArray alloc] init];
     tempArr = [[NSMutableArray alloc] init];
-    
     
     //add map to view
     [self.view addSubview:mapView_];
@@ -100,9 +98,20 @@
     [time fire];
     
     //set edit profile name
-    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit Profile" style:UIBarButtonItemStylePlain target:self action:@selector(changeToSettings)];
+    UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit Profile" style:UIBarButtonItemStylePlain target:self action:@selector(changeToSettings)];
     
-    self.navigationItem.leftBarButtonItem = anchorLeftButton;
+    self.navigationItem.rightBarButtonItem = anchorRightButton;    //ask for name
+    
+    //get name
+    profileName = [[NSUserDefaults standardUserDefaults] stringForKey:@"user"];
+    uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"uid"];
+    
+    if(([profileName length] == 0) || ([uid length] == 0) ) {
+        [self changeToSettings];
+    }
+    
+    //grab friends
+    NSData *data = [API getFriends:url uid:uid];
     
 }
 
@@ -135,9 +144,6 @@
     
     //get markers within 5 mile radius
     NSData* data = [API getMarkers:url location:location radiusInFeet:(5280 * 5)];
-    
-    NSLog(@"%f%f", location.coordinate.latitude, location.coordinate.longitude);
-    
     if(data != nil) {
         NSError* error;
         NSDictionary* json = [NSJSONSerialization
@@ -162,6 +168,7 @@
             } else {
                 marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
             }
+
             
             marker.title = [dict objectForKey:@"username"];
             marker.snippet = [NSString stringWithFormat:@"[%d] %@",  mark.rating, [dict objectForKey:@"message"]];
@@ -285,9 +292,12 @@
     //UINavigationController *nav = (UINavigationController*)self.slidingViewController.topViewController;
     //nav.navigationBar.topItem.title = @"Settings";
     
-    profileNameChange = [[UIAlertView alloc] initWithTitle:@"Insert Profile Name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
-    profileNameChange.alertViewStyle = UIAlertViewStylePlainTextInput;
-    [profileNameChange show];
+    
+        profileNameChange = [[UIAlertView alloc] initWithTitle:@"Insert Profile Name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+        profileNameChange.alertViewStyle = UIAlertViewStylePlainTextInput;
+        [profileNameChange show];
+
+
 }
 
 #pragma mark GO TO MAP
@@ -321,7 +331,6 @@
             
             //connect with api
             NSData *data;
-            NSLog(@"%f%f", location.coordinate.latitude, location.coordinate.longitude);
             data = [API postMarker:url message:textBox.text location:location username:profileName recipient:@"public"];
             
             if(data != nil) {
@@ -449,16 +458,102 @@
         tempMark = nil;
         return;
     } else if([alertView isEqual:profileNameChange]) {
-        
         //if user presses cancel
         if(buttonIndex == 0) {
-            return;
+            if([profileName length] == 0) {
+                [self changeToSettings];
+            } else {
+                return;
+            }
         }
         
-        //however, if not empty, set profile name to this
-        if([[alertView textFieldAtIndex:0].text length] != 0) {
-            profileName = [[alertView textFieldAtIndex:0] text];
+        if(buttonIndex == 1) {
+            //however, if not empty, set profile name to this
+            if([[alertView textFieldAtIndex:0].text length] != 0) {
+                profileName = [[alertView textFieldAtIndex:0] text];
+            } else if([profileName length] == 0) {
+                [self changeToSettings];
+            }
         }
+        
+        //time to create user if uid is nil
+        if([uid length] ==  0) {
+            NSData *data = [API createName:url name:profileName];
+            
+            if(data != nil) {
+                NSError* error;
+                NSDictionary* json = [NSJSONSerialization
+                                      JSONObjectWithData:data
+                                      options:kNilOptions
+                                      error:&error];
+                
+                if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
+                    //if successful, get uid
+                    data = [API lookup:url lookupName:profileName];
+                    
+                    if(data != nil) {
+                        NSError* error;
+                        NSDictionary* json = [NSJSONSerialization
+                                              JSONObjectWithData:data
+                                              options:kNilOptions
+                                              error:&error];
+                        
+                        for(NSDictionary *dict in json) {
+                            uid = (NSString*)[dict objectForKey:@"_id"];
+                        }
+                    } else {
+                        //if somehow data is still nil, try again
+                        //need to redo if username already taken
+                        NSLog(@"Redo username?");
+                        [self changeToSettings];
+                    }
+                    
+                } else {
+                    [self changeToSettings];
+                }
+            }
+        } else {
+            //if uid is not 0, then we can update instead of create
+            NSData *data = [API updateName:url uid:uid displayName:profileName];
+            
+            if(data != nil) {
+                NSError* error;
+                NSDictionary* json = [NSJSONSerialization
+                                      JSONObjectWithData:data
+                                      options:kNilOptions
+                                      error:&error];
+                
+                if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
+                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                    
+                    // Configure for text only and offset down
+                    hud.mode = MBProgressHUDModeText;
+                    hud.labelText = @"Name Changed!";
+                    hud.margin = 10.f;
+                    hud.yOffset = 150.f;
+                    hud.removeFromSuperViewOnHide = YES;
+                    
+                    [hud hide:YES afterDelay:2];
+                } else {
+                    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                    
+                    // Configure for text only and offset down
+                    hud.mode = MBProgressHUDModeText;
+                    hud.labelText = @"Unable to change name. (Possibly Taken)";
+                    hud.margin = 10.f;
+                    hud.yOffset = 150.f;
+                    hud.removeFromSuperViewOnHide = YES;
+                    
+                    [hud hide:YES afterDelay:2];
+                }
+            }
+
+        }
+        
+        //set to user and save
+        [[NSUserDefaults standardUserDefaults] setValue:profileName forKey:@"user"];
+        [[NSUserDefaults standardUserDefaults] setValue:uid forKey:@"uid"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
         
         return;
         

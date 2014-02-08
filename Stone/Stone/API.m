@@ -60,9 +60,9 @@
     return data;
 }
 
-+ (NSData*) updateName:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName {
++ (NSData*) updateName:(NSString*)url uid:(NSString*)uid displayName:(NSString*)displayName {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/update/%d/%@", url, uid, displayName]];
+    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/update/%@/%@", url, uid, displayName]];
     NSError *requestError;
     NSLog(@"%@", [urlSend path]);
     NSURLResponse *urlResponse = nil;
@@ -82,9 +82,9 @@
     return data;
 }
 
-+ (NSData*) addFriend:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName {
++ (NSData*) addFriend:(NSString*)url uid:(NSString*)uid displayName:(NSString*)displayName {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/addfriend/%d/%@", url, uid, displayName]];
+    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/addfriend/%@/%@", url, uid, displayName]];
     NSError *requestError;
     NSLog(@"%@", [urlSend path]);
     NSURLResponse *urlResponse = nil;
@@ -93,9 +93,9 @@
     return data;
 }
 
-+ (NSData*) delFriend:(NSString*)url uid:(NSInteger)uid displayName:(NSString*)displayName {
++ (NSData*) delFriend:(NSString*)url uid:(NSString*)uid displayName:(NSString*)displayName {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/delfriend/%d/%@", url, uid, displayName]];
+    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/delfriend/%@/%@", url, uid, displayName]];
     NSError *requestError;
     NSLog(@"%@", [urlSend path]);
     NSURLResponse *urlResponse = nil;
@@ -104,9 +104,9 @@
     return data;
 }
 
-+ (NSData*) getFriends:(NSString*)url uid:(NSInteger)uid {
++ (NSData*) getFriends:(NSString*)url uid:(NSString*)uid {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/update/%d", url, uid]];
+    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/update/%@", url, uid]];
     NSError *requestError;
     NSLog(@"%@", [urlSend path]);
     NSURLResponse *urlResponse = nil;
