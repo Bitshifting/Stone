@@ -7,12 +7,16 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
-#import "ECSlidingViewController.h"
-#import <GoogleMaps/GoogleMaps.h>
-#import "APIKey.h"
+
+
+@interface AppDelegate ()
+@property (nonatomic, strong) ECSlidingViewController *slidingVC;
+@property (nonatomic, strong) UINavigationController *navCont;
+@end
 
 @implementation AppDelegate
+
+@synthesize topView;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -22,15 +26,47 @@
     APIKey *key = [[APIKey alloc] init];
     [GMSServices provideAPIKey:key.key];
     
-    ViewController *vc = [[ViewController alloc] init];
+    //set up top and left view
+    topView = [[ViewController alloc] init];
+    LeftViewController *leftView = [[LeftViewController alloc] init];
     
-    [self.window setRootViewController:vc];
+    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Menu" style:UIBarButtonItemStylePlain target:self action:@selector(anchorLeft)];
+    
+    topView.navigationItem.title = @"Stone";
+    topView.navigationItem.leftBarButtonItem = anchorLeftButton;
+    
+    //navigation controller
+    _navCont = [[UINavigationController alloc] initWithRootViewController:topView];
+    
+    //create left view
+    leftView.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    leftView.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom | UIRectEdgeLeft;
+    
+    self.slidingVC = [ECSlidingViewController slidingWithTopViewController:_navCont];
+    self.slidingVC.underLeftViewController = leftView;
+    self.slidingVC.underRightViewController = nil;
+    self.slidingVC.view.backgroundColor = [UIColor whiteColor];
+    
+    [_navCont.view addGestureRecognizer:self.slidingVC.panGesture];
+    
+    self.slidingVC.anchorRightPeekAmount = 100.0;
+    
+    [self.window setRootViewController:self.slidingVC];
     [self.window makeKeyAndVisible];
     
     
-    
-    
     return YES;
+}
+
+- (void)anchorLeft {
+    
+    ECSlidingViewControllerTopViewPosition pos = self.slidingVC.currentTopViewPosition;
+    
+    if(pos == 2) {
+        [self.slidingVC anchorTopViewToRightAnimated:YES];
+    } else {
+        [self.slidingVC resetTopViewAnimated:YES];
+    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

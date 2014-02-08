@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import <GoogleMaps/GoogleMaps.h>
-#import "MainView.h"
 #import <CoreLocation/CoreLocation.h>
 
 @interface ViewController : UIViewController <CLLocationManagerDelegate, GMSMapViewDelegate>
 
 @property (nonatomic,retain) CLLocationManager *locationManager;
+
+- (void) changeToSettings;
+- (void) changeToMap;
 
 @end

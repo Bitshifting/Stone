@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "UIViewController+ECSlidingViewController.h"
 
 @interface ViewController ()
 
@@ -15,6 +16,7 @@
 @implementation ViewController {
     GMSMapView *mapView_;
     BOOL initial_;
+    BOOL isMap;
 }
 
 @synthesize locationManager;
@@ -42,7 +44,9 @@
     [locationManager startUpdatingLocation];
     
     self.view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.view.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:mapView_];
+    isMap = YES;
     
 }
 
@@ -55,6 +59,11 @@
         [mapView_ animateToCameraPosition:camera];
         initial_ = NO;
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    self.navigationController.navigationBarHidden = NO;
 }
 
 - (BOOL) didTapMyLocationButtonForMapView: (GMSMapView *) mapView	{
@@ -74,6 +83,18 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void) changeToSettings {
+    mapView_.hidden = YES;
+    UINavigationController *nav = (UINavigationController*)self.slidingViewController.topViewController;
+    nav.navigationBar.topItem.title = @"Settings";
+}
+
+- (void) changeToMap {
+    mapView_.hidden = NO;
+    UINavigationController *nav = (UINavigationController*)self.slidingViewController.topViewController;
+    nav.navigationBar.topItem.title = @"Stone";
 }
 
 @end

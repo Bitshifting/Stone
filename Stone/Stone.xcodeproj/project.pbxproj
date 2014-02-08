@@ -16,7 +16,6 @@
 		9F79355818A5E322001C8901 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355718A5E322001C8901 /* AppDelegate.m */; };
 		9F79355E18A5E322001C8901 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79355D18A5E322001C8901 /* ViewController.m */; };
 		9F79356018A5E322001C8901 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9F79355F18A5E322001C8901 /* Images.xcassets */; };
-		9F79357E18A5E46E001C8901 /* MainView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79357D18A5E46E001C8901 /* MainView.m */; };
 		9F79358418A5E541001C8901 /* GoogleMaps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358318A5E541001C8901 /* GoogleMaps.framework */; };
 		9F79358618A5E57C001C8901 /* GoogleMaps.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F79358518A5E57C001C8901 /* GoogleMaps.bundle */; };
 		9F79358818A5E5F7001C8901 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F79358718A5E5F7001C8901 /* AVFoundation.framework */; };
@@ -52,8 +51,6 @@
 		9F79355D18A5E322001C8901 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		9F79355F18A5E322001C8901 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		9F79356618A5E322001C8901 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		9F79357C18A5E46E001C8901 /* MainView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainView.h; sourceTree = "<group>"; };
-		9F79357D18A5E46E001C8901 /* MainView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainView.m; sourceTree = "<group>"; };
 		9F79358318A5E541001C8901 /* GoogleMaps.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleMaps.framework; sourceTree = "<group>"; };
 		9F79358518A5E57C001C8901 /* GoogleMaps.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = GoogleMaps.bundle; path = GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle; sourceTree = "<group>"; };
 		9F79358718A5E5F7001C8901 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -157,8 +154,6 @@
 				9F79355C18A5E322001C8901 /* ViewController.h */,
 				9F79355D18A5E322001C8901 /* ViewController.m */,
 				9F79355F18A5E322001C8901 /* Images.xcassets */,
-				9F79357C18A5E46E001C8901 /* MainView.h */,
-				9F79357D18A5E46E001C8901 /* MainView.m */,
 				9FC0E0AB18A6046400180920 /* APIKey.h */,
 				9FC0E0AC18A6046400180920 /* APIKey.m */,
 			);
@@ -279,7 +274,6 @@
 				9FC0E0AD18A6046400180920 /* APIKey.m in Sources */,
 				9F79355E18A5E322001C8901 /* ViewController.m in Sources */,
 				9FC0E0AA18A603DB00180920 /* LeftViewController.m in Sources */,
-				9F79357E18A5E46E001C8901 /* MainView.m in Sources */,
 				9F79355818A5E322001C8901 /* AppDelegate.m in Sources */,
 				9F79355418A5E322001C8901 /* main.m in Sources */,
 			);
