@@ -1,0 +1,10 @@
+PODS:
+  - ECSlidingViewController (2.0.0)
+
+DEPENDENCIES:
+  - ECSlidingViewController (~> 2.0.0)
+
+SPEC CHECKSUMS:
+  ECSlidingViewController: 9a30cf3c446e39de70128299663fde097d8f3f88
+
+COCOAPODS: 0.29.0

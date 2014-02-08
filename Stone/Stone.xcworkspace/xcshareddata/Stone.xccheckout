@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>C73330D5-EBC9-4D53-A22D-365D7C5E696F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Stone</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>EBF8C3EE-6D25-4A97-80DD-0CDACCBEBC0B</key>
+		<string>https://github.com/kksiu/Stone.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Stone/Stone.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>EBF8C3EE-6D25-4A97-80DD-0CDACCBEBC0B</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/kksiu/Stone.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>110</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>EBF8C3EE-6D25-4A97-80DD-0CDACCBEBC0B</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>EBF8C3EE-6D25-4A97-80DD-0CDACCBEBC0B</string>
+			<key>IDESourceControlWCCName</key>
+			<string>Stone</string>
+		</dict>
+	</array>
+</dict>
+</plist>
