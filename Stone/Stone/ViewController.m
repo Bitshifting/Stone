@@ -25,6 +25,7 @@
     GMSMarker *tempMark;
     CLLocation *location;
     NSTimer *time;
+    NSTimer *time2;
     LeftViewController *leftVC;
 }
 
@@ -97,6 +98,17 @@
                                            repeats:YES];
     [time fire];
     
+    
+    //timer to check friendship
+    //timer
+    time2 = [NSTimer scheduledTimerWithTimeInterval:5.0
+                                            target:self
+                                          selector:@selector(reloadFriends)
+                                          userInfo:nil
+                                           repeats:YES];
+    [time2 fire];
+    
+    
     //set edit profile name
     UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit Name" style:UIBarButtonItemStylePlain target:self action:@selector(changeToSettings)];
     
@@ -114,6 +126,23 @@
     
     if(([profileName length] == 0) || ([uid length] == 0) ) {
         [self changeToSettings];
+    } else {
+        NSData *data = [API lookup:[ViewController parseSpace:url] lookupName:[ViewController parseSpace:profileName]];
+        if(data != nil) {
+            NSError* error;
+            NSDictionary* json = [NSJSONSerialization
+                                  JSONObjectWithData:data
+                                  options:kNilOptions
+                                  error:&error];
+            
+            if([json count] == 0) {
+                //then recreate account and ask for new name
+                profileName = @"";
+                uid = @"";
+                [self changeToSettings];
+            }
+        }
+        
     }
     
     //reload friends
@@ -155,8 +184,8 @@
     
     [mapView_ clear];
     
-    //get markers within 5 mile radius
-    NSData* data = [API getMarkers:url location:location radiusInFeet:(5280 * 5)];
+    //get markers within 10 mile radius
+    NSData* data = [API getMarkers:[ViewController parseSpace:url] location:location radiusInFeet:(5280 * 10)];
     if(data != nil) {
         NSError* error;
         NSDictionary* json = [NSJSONSerialization
@@ -176,7 +205,7 @@
             
             if (distance < 0.06) {
                 marker.icon =  [GMSMarker markerImageWithColor:[UIColor greenColor]];
-            } else if (distance < 0.2) {
+            } else if (distance < 0.5) {
                 marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
             } else {
                 marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
@@ -352,7 +381,7 @@
             
             //connect with api
             NSData *data;
-            data = [API postMarker:url message:textBox.text location:location username:profileName recipient:@"public"];
+            data = [API postMarker:[ViewController parseSpace:url] message:[ViewController parseSpace:textBox.text] location:location username:[ViewController parseSpace:profileName] recipient:@"public"];
             
             if(data != nil) {
                 
@@ -431,13 +460,13 @@
         
         //down vote
         if(buttonIndex == 2) {
-            data = [API vote:url id:((Marker*)tempMark.userData).ID amount:1 dir:-1];
+            data = [API vote:[ViewController parseSpace:url] id:((Marker*)tempMark.userData).ID amount:1 dir:-1];
             tempMark = nil;
         }
         
         //up vote
         if(buttonIndex == 1) {
-            data = [API vote:url id:((Marker*)tempMark.userData).ID amount:1 dir:1];
+            data = [API vote:[ViewController parseSpace:url] id:((Marker*)tempMark.userData).ID amount:1 dir:1];
             tempMark = nil;
         }
         
@@ -501,7 +530,7 @@
         
         //time to create user if uid is nil
         if([uid length] ==  0) {
-            NSData *data = [API createName:url name:profileName];
+            NSData *data = [API createName:[ViewController parseSpace:url] name:[ViewController parseSpace:profileName]];
             
             if(data != nil) {
                 NSError* error;
@@ -512,7 +541,7 @@
                 
                 if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
                     //if successful, get uid
-                    data = [API lookup:url lookupName:profileName];
+                    data = [API lookup:[ViewController parseSpace:url] lookupName:[ViewController parseSpace:profileName]];
                     
                     if(data != nil) {
                         NSError* error;
@@ -538,7 +567,7 @@
             }
         } else {
             //if uid is not 0, then we can update instead of create
-            NSData *data = [API updateName:url uid:uid displayName:profileName];
+            NSData *data = [API updateName:[ViewController parseSpace:url] uid:uid displayName:[ViewController parseSpace:profileName]];
             
             if(data != nil) {
                 NSError* error;
@@ -558,6 +587,7 @@
                     hud.removeFromSuperViewOnHide = YES;
                     
                     [hud hide:YES afterDelay:2];
+                    [leftVC reloadFriends];
                 } else {
                     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
                     
@@ -613,6 +643,14 @@
     } else {
         [self.slidingViewController resetTopViewAnimated:YES];
     }
+}
+
+- (void) reloadFriends {
+    [leftVC reloadFriends];
+}
+
++ (NSString*) parseSpace:(NSString*)str {
+    return [str stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
 }
 
 @end

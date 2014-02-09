@@ -27,7 +27,7 @@
 + (NSData*) postMarker:(NSString*)url message:(NSString*)msg location:(CLLocation*)loc username:(NSString*)user recipient:(NSString*)rec {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/message/post/%@/%f/%f/%@/%@", url, msg, loc.coordinate.latitude, loc.coordinate.longitude, user, rec]];
-    NSLog(@"URL: %@", [urlSend path]);
+    NSLog(@"%@/stoneapi/message/post/%@/%f/%f/%@/%@", url, msg, loc.coordinate.latitude, loc.coordinate.longitude, user, rec);
     NSError *requestError;
     NSURLResponse *urlResponse = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:[[NSURLRequest alloc] initWithURL:urlSend] returningResponse:&urlResponse error:&requestError];
@@ -108,7 +108,6 @@
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
     NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/getFollowees/%@", url, uid]];
     NSError *requestError;
-    NSLog(@"%@", [urlSend path]);
     NSURLResponse *urlResponse = nil;
     NSData *data = [NSURLConnection sendSynchronousRequest:[[NSURLRequest alloc] initWithURL:urlSend] returningResponse:&urlResponse error:&requestError];
     [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;

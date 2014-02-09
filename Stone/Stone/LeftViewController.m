@@ -34,10 +34,11 @@
         
         
         //table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        [table setSeparatorInset:UIEdgeInsetsZero];
         
         
         UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50, [[UIScreen mainScreen] bounds].size.width - 100, 50)];
-        [button setTitle:@"Add Follower" forState:UIControlStateNormal];
+        [button setTitle:@"Add Friend" forState:UIControlStateNormal];
         [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
         [button setBackgroundColor:[UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0]];
         [button addTarget:self action:@selector(addFriendAlert) forControlEvents:UIControlEventTouchDown];
@@ -63,11 +64,6 @@
     [addFriend show];
 }
 
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-}
-
 - (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if([alertView isEqual:addFriend]) {
         if(buttonIndex == 0) {
@@ -85,11 +81,21 @@
         }
         
         if(alreadyFriend) {
+            HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+            // Configure for text only and offset down
+            HUD.mode = MBProgressHUDModeText;
+            HUD.labelText = @"Already your friend!";
+            HUD.margin = 10.f;
+            HUD.yOffset = 150.f;
+            HUD.removeFromSuperViewOnHide = YES;
+            
+            [HUD hide:YES afterDelay:2];
             return;
         }
         
         //if not already a friend, begin to add friend
-        NSData *data = [API addFriend:url uid:uid displayName:frDispName];
+        NSData *data = [API addFriend:[ViewController parseSpace:url] uid:uid displayName:[ViewController parseSpace:frDispName]];
         
         if(data != nil) {
             NSError* error;
@@ -103,7 +109,7 @@
                 
                 // Configure for text only and offset down
                 HUD.mode = MBProgressHUDModeText;
-                HUD.labelText = @"Added Follower!";
+                HUD.labelText = @"Added Friend!";
                 HUD.margin = 10.f;
                 HUD.yOffset = 150.f;
                 HUD.removeFromSuperViewOnHide = YES;
@@ -115,6 +121,20 @@
                 
                 
             }
+        } else {
+            HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
+            
+            // Configure for text only and offset down
+            HUD.mode = MBProgressHUDModeText;
+            HUD.labelText = @"User does not exist!";
+            HUD.margin = 10.f;
+            HUD.yOffset = 150.f;
+            HUD.removeFromSuperViewOnHide = YES;
+            
+            [HUD hide:YES afterDelay:2];
+            
+            //refresh friends
+            [self reloadFriends];
         }
         
         return;
@@ -126,7 +146,7 @@
         }
         
         //time to remove friend
-        NSData *data = [API delFriend:url uid:uid displayName:tempName];
+        NSData *data = [API delFriend:[ViewController parseSpace:url] uid:uid displayName:[ViewController parseSpace:tempName]];
         
         if(data != nil) {
             NSError* error;
@@ -140,7 +160,7 @@
                 
                 // Configure for text only and offset down
                 HUD.mode = MBProgressHUDModeText;
-                HUD.labelText = @"Removed Follower!";
+                HUD.labelText = @"Removed Friend!";
                 HUD.margin = 10.f;
                 HUD.yOffset = 150.f;
                 HUD.removeFromSuperViewOnHide = YES;
@@ -197,11 +217,12 @@
         [view changeToSettings];
     }
     
-    tempName = [arrOfFriends objectAtIndex:indexPath.row];
+    tempName = ((Friend*)[arrOfFriends objectAtIndex:indexPath.row]).displayName;
     
     //set alert so one can type in friend's name
-    removeFriend = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Remove FolloweR: %@", tempName] message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" , nil];
+    removeFriend = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Remove Friend: %@", tempName] message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" , nil];
     [removeFriend show];
+    
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -223,7 +244,7 @@
     [self.arrOfFriends removeAllObjects];
     
     //grab friends
-    NSData *data = [API getFriends:url uid:uid];
+    NSData *data = [API getFriends:[ViewController parseSpace:url] uid:uid];
     
     if(data != nil) {
         NSError* error;
@@ -233,7 +254,7 @@
                               error:&error];
         
         for(NSDictionary *dict in json) {
-            Friend *tempFr = [[Friend alloc] initWithID:(NSString*)[dict objectForKey:@"_id"] displayName:(NSString*)[dict objectForKey:@"username"]];
+            Friend *tempFr = [[Friend alloc] initWithID:(NSString*)[dict objectForKey:@"followee"] displayName:(NSString*)[dict objectForKey:@"followeeName"]];
             [self.arrOfFriends addObject:tempFr];
         }
     }

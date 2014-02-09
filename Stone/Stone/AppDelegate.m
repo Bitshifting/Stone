@@ -49,6 +49,7 @@
     
     //enable pan gestures
     [_navCont.view addGestureRecognizer:self.slidingVC.panGesture];
+    [leftView.view addGestureRecognizer:self.slidingVC.panGesture];
     
     //set how far left view goes
     self.slidingVC.anchorRightPeekAmount = 100.0;
