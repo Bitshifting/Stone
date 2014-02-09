@@ -80,7 +80,7 @@
     insertMsg.layer.cornerRadius = 10;
     insertMsg.clipsToBounds = YES;
     insertMsg.layer.backgroundColor = [[UIColor whiteColor] CGColor];
-    insertMsg.frame = CGRectMake(95.0, self.view.bounds.size.height - insertMsg.bounds.size.height - 50, 130.0, 40.0);
+    insertMsg.frame = CGRectMake(95.0, self.view.bounds.size.height - insertMsg.bounds.size.height - 45, 130.0, 40.0);
     
     //initialize array of markers
     arrMark = [[NSMutableArray alloc] init];
@@ -203,7 +203,7 @@
             GMSMarker *marker = [GMSMarker markerWithPosition:position];
             float distance = [self getDistance:location.coordinate.latitude loc1Long:location.coordinate.longitude loc2Lat:marker.position.latitude loc2Long:marker.position.longitude];
             
-            if (distance < 0.06) {
+            if (distance < 0.1) {
                 marker.icon =  [GMSMarker markerImageWithColor:[UIColor greenColor]];
             } else if (distance < 0.5) {
                 marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
@@ -289,7 +289,7 @@
     
     NSLog(@"%f", distance);
     
-    if(distance < .06) {
+    if(distance < .1) {
         //used to determine if need to show more than 1 item
         [tempArr addObject:marker];
         for(GMSMarker *mark in arrMark) {
