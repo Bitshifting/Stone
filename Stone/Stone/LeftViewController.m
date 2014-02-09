@@ -203,20 +203,6 @@
 
 - (void)tableView: (UITableView *)tableView didSelectRowAtIndexPath: (NSIndexPath *)indexPath {
     
-    UINavigationController *nav  = (UINavigationController*)self.slidingViewController.topViewController;
-    
-    //get main view controller (the top one)
-    ViewController *view = (ViewController*)[nav.viewControllers objectAtIndex:0];
-    
-    //if clicking map, set it to map
-    if(indexPath.row == 0) {
-        [view changeToMap];
-    }
-    //if clicking settings, go to settings
-    if(indexPath.row == 1) {
-        [view changeToSettings];
-    }
-    
     tempName = ((Friend*)[arrOfFriends objectAtIndex:indexPath.row]).displayName;
     
     //set alert so one can type in friend's name
