@@ -32,6 +32,7 @@
 		9F79EFCB18A6BF2800246118 /* Stone_logo58.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F79EFC818A6BF2800246118 /* Stone_logo58.png */; };
 		9F79EFCC18A6BF2800246118 /* Stone_logo80.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F79EFC918A6BF2800246118 /* Stone_logo80.png */; };
 		9F79EFCD18A6BF2800246118 /* Stone_logo120.png in Resources */ = {isa = PBXBuildFile; fileRef = 9F79EFCA18A6BF2800246118 /* Stone_logo120.png */; };
+		9F79EFD018A6F83000246118 /* Friend.m in Sources */ = {isa = PBXBuildFile; fileRef = 9F79EFCF18A6F83000246118 /* Friend.m */; };
 		9FC0E0AA18A603DB00180920 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0A918A603DB00180920 /* LeftViewController.m */; };
 		9FC0E0AD18A6046400180920 /* APIKey.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0AC18A6046400180920 /* APIKey.m */; };
 		9FC0E0B218A652E000180920 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = 9FC0E0B118A652E000180920 /* API.m */; };
@@ -71,6 +72,8 @@
 		9F79EFC818A6BF2800246118 /* Stone_logo58.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo58.png; sourceTree = "<group>"; };
 		9F79EFC918A6BF2800246118 /* Stone_logo80.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo80.png; sourceTree = "<group>"; };
 		9F79EFCA18A6BF2800246118 /* Stone_logo120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Stone_logo120.png; sourceTree = "<group>"; };
+		9F79EFCE18A6F83000246118 /* Friend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Friend.h; path = ../Friend.h; sourceTree = "<group>"; };
+		9F79EFCF18A6F83000246118 /* Friend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Friend.m; path = ../Friend.m; sourceTree = "<group>"; };
 		9FC0E0A818A603DB00180920 /* LeftViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftViewController.h; sourceTree = "<group>"; };
 		9FC0E0A918A603DB00180920 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		9FC0E0AB18A6046400180920 /* APIKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APIKey.h; sourceTree = "<group>"; };
@@ -156,6 +159,8 @@
 		9F79354D18A5E322001C8901 /* Stone */ = {
 			isa = PBXGroup;
 			children = (
+				9F79EFCE18A6F83000246118 /* Friend.h */,
+				9F79EFCF18A6F83000246118 /* Friend.m */,
 				9FC0E0B318A65BBA00180920 /* Marker.h */,
 				9FC0E0B418A65BBA00180920 /* Marker.m */,
 				9F79354E18A5E322001C8901 /* Supporting Files */,
@@ -292,6 +297,7 @@
 				9FC0E0B218A652E000180920 /* API.m in Sources */,
 				9FC0E0AD18A6046400180920 /* APIKey.m in Sources */,
 				9F79355E18A5E322001C8901 /* ViewController.m in Sources */,
+				9F79EFD018A6F83000246118 /* Friend.m in Sources */,
 				9FC0E0AA18A603DB00180920 /* LeftViewController.m in Sources */,
 				9F79355818A5E322001C8901 /* AppDelegate.m in Sources */,
 				9F79355418A5E322001C8901 /* main.m in Sources */,

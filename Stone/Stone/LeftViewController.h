@@ -11,5 +11,6 @@
 @interface LeftViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>
 
 @property UITableView *table;
+@property NSMutableArray *arrOfFriends;
 
 @end

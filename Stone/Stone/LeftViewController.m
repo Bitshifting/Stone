@@ -9,22 +9,22 @@
 #import "LeftViewController.h"
 #import "ViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import "Friend.h"
 
 @interface LeftViewController ()
 @end
 
 @implementation LeftViewController {
-    NSArray *menuSettings;
 }
 
-@synthesize table;
+@synthesize table, arrOfFriends;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
-        menuSettings = [NSArray arrayWithObjects:@"Map", @"Profile Name", nil];
+        arrOfFriends = [[NSMutableArray alloc] init];
         
         // Custom initialization
         table = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
@@ -52,7 +52,7 @@
 //table view delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [menuSettings count];
+    return [arrOfFriends count];
 }
 
 - (void) viewDidLayoutSubviews {
@@ -82,7 +82,7 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
     }
     
-    cell.textLabel.text = [menuSettings objectAtIndex:indexPath.row];
+    cell.textLabel.text = ((Friend*)[arrOfFriends objectAtIndex:indexPath.row]).displayName;
     
     return cell;
 }
@@ -103,7 +103,7 @@
         [view changeToSettings];
     }
     
-    [self.slidingViewController resetTopViewAnimated:YES];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 }
 

@@ -29,45 +29,34 @@
     //set up top and left view
     topView = [[ViewController alloc] init];
     
-    topView.navigationItem.title = @"Stone";
+    topView.navigationItem.title = @"";
     
     //navigation controller
     _navCont = [[UINavigationController alloc] initWithRootViewController:topView];
     
-//    LeftViewController *leftView = [[LeftViewController alloc] init];
+    LeftViewController *leftView = [[LeftViewController alloc] init];
 
-//    //create left view
-//    leftView.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
-//    leftView.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom | UIRectEdgeLeft;
-//    
-//    //set sliding view controller
-//    self.slidingVC = [ECSlidingViewController slidingWithTopViewController:_navCont];
-//    self.slidingVC.underLeftViewController = nil;
-//    self.slidingVC.underRightViewController = nil;
-//    self.slidingVC.view.backgroundColor = [UIColor whiteColor];
-//    
-//    //enable pan gestures
-//    [_navCont.view addGestureRecognizer:self.slidingVC.panGesture];
-//    
-//    //set how far left view goes
-//    self.slidingVC.anchorRightPeekAmount = 100.0;
+    //create left view
+    leftView.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
+    leftView.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom | UIRectEdgeLeft;
     
-    [self.window setRootViewController:_navCont];
+    //set sliding view controller
+    self.slidingVC = [ECSlidingViewController slidingWithTopViewController:_navCont];
+    self.slidingVC.underLeftViewController = leftView;
+    self.slidingVC.underRightViewController = nil;
+    self.slidingVC.view.backgroundColor = [UIColor whiteColor];
+    
+    //enable pan gestures
+    [_navCont.view addGestureRecognizer:self.slidingVC.panGesture];
+    
+    //set how far left view goes
+    self.slidingVC.anchorRightPeekAmount = 100.0;
+    
+    [self.window setRootViewController:self.slidingVC];
     [self.window makeKeyAndVisible];
     
     
     return YES;
-}
-
-- (void)anchorLeft {
-    
-    ECSlidingViewControllerTopViewPosition pos = self.slidingVC.currentTopViewPosition;
-    
-    if(pos == 2) {
-        [self.slidingVC anchorTopViewToRightAnimated:YES];
-    } else {
-        [self.slidingVC resetTopViewAnimated:YES];
-    }
 }
 							
 - (void)applicationWillResignActive:(UIApplication *)application

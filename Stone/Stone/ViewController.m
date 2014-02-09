@@ -12,6 +12,8 @@
 #import "APIKey.h"
 #import "Marker.h"
 #import "MBProgressHUD.h"
+#import "LeftViewController.h"
+#import "Friend.h"
 
 @interface ViewController ()
 
@@ -24,7 +26,6 @@
     CLLocation *location;
     NSTimer *time;
     NSString *uid;
-    NSMutableArray *friendsList;
 }
 
 @synthesize locationManager, insertMsg, removeMark, rateMark, addMark, profileName, profileNameChange, url, arrMark, chooseMark, tempArr;
@@ -98,13 +99,19 @@
     [time fire];
     
     //set edit profile name
-    UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit Profile" style:UIBarButtonItemStylePlain target:self action:@selector(changeToSettings)];
+    UIBarButtonItem *anchorRightButton = [[UIBarButtonItem alloc] initWithTitle:@"Edit Name" style:UIBarButtonItemStylePlain target:self action:@selector(changeToSettings)];
     
-    self.navigationItem.rightBarButtonItem = anchorRightButton;    //ask for name
+    self.navigationItem.rightBarButtonItem = anchorRightButton;
+    
+    //set friends list
+    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Friends" style:UIBarButtonItemStylePlain target:self action:
+                                         @selector(anchorLeft)];
+    
+    self.navigationItem.leftBarButtonItem = anchorLeftButton;
     
     //get name
     profileName = [[NSUserDefaults standardUserDefaults] stringForKey:@"user"];
-    uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"uid"];
+    uid = [[NSUserDefaults standardUserDefaults] stringForKey:@"_id"];
     
     if(([profileName length] == 0) || ([uid length] == 0) ) {
         [self changeToSettings];
@@ -113,6 +120,24 @@
     //grab friends
     NSData *data = [API getFriends:url uid:uid];
     
+    if(data != nil) {
+        NSError* error;
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              options:kNilOptions
+                              error:&error];
+        
+        for(NSDictionary *dict in json) {
+            Friend *tempFr = [[Friend alloc] initWithID:(NSString*)[dict objectForKey:@"_id"] displayName:(NSString*)[dict objectForKey:@"username"]];
+            LeftViewController *left = (LeftViewController*) self.slidingViewController.underLeftViewController;
+            [left.arrOfFriends addObject:tempFr];
+        }
+    }
+    
+    Friend *fr = [[Friend alloc] initWithID:@"HERP" displayName:@"DERP"];
+    LeftViewController *left = (LeftViewController*) self.slidingViewController.underLeftViewController;
+    [left.arrOfFriends addObject:fr];
+    [left.table reloadData];
 }
 
 -(BOOL)shouldAutorotate
@@ -307,7 +332,7 @@
     [self.view addSubview:mapView_];
     [self.view addSubview:insertMsg];
     UINavigationController *nav = (UINavigationController*)self.slidingViewController.topViewController;
-    nav.navigationBar.topItem.title = @"Stone";
+    nav.navigationBar.topItem.title = profileName;
 }
 
 #pragma mark ALERT VIEW DELEGATE
@@ -500,6 +525,7 @@
                         
                         for(NSDictionary *dict in json) {
                             uid = (NSString*)[dict objectForKey:@"_id"];
+                            NSLog(@"UID: %@", uid);
                         }
                     } else {
                         //if somehow data is still nil, try again
@@ -552,8 +578,10 @@
         
         //set to user and save
         [[NSUserDefaults standardUserDefaults] setValue:profileName forKey:@"user"];
-        [[NSUserDefaults standardUserDefaults] setValue:uid forKey:@"uid"];
+        [[NSUserDefaults standardUserDefaults] setValue:uid forKey:@"_id"];
         [[NSUserDefaults standardUserDefaults] synchronize];
+        
+        ((UINavigationController*)self.slidingViewController.topViewController).navigationBar.topItem.title = profileName;
         
         return;
         
@@ -575,6 +603,17 @@
     float a = sinf(dLat/2) * sinf(dLat/2) + sinf(dLon/2) * sinf(dLon/2) * cosf(lat1) * cosf(lat2);
     float c = 2 * atan2f(sqrtf(a), sqrtf(1-a));
     return 6371 * c;
+}
+
+- (void) anchorLeft {
+    
+    ECSlidingViewControllerTopViewPosition pos = self.slidingViewController.currentTopViewPosition;
+    
+    if(pos == 2) {
+        [self.slidingViewController anchorTopViewToRightAnimated:YES];
+    } else {
+        [self.slidingViewController resetTopViewAnimated:YES];
+    }
 }
 
 @end
