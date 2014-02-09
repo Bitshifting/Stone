@@ -176,14 +176,24 @@
             
             if (distance < 0.06) {
                 marker.icon =  [GMSMarker markerImageWithColor:[UIColor greenColor]];
-            } else if (distance < 0.1) {
+            } else if (distance < 0.2) {
                 marker.icon = [GMSMarker markerImageWithColor:[UIColor blueColor]];
             } else {
                 marker.icon = [GMSMarker markerImageWithColor:[UIColor redColor]];
             }
-
             
-            marker.title = [dict objectForKey:@"username"];
+            LeftViewController *left   = (LeftViewController*)self.slidingViewController.underLeftViewController;
+            
+            NSString *title = [dict objectForKey:@"username"];
+            
+            for(Friend *fr in left.arrOfFriends) {
+                if([title isEqualToString:fr.displayName]) {
+                    marker.icon = [GMSMarker markerImageWithColor:[UIColor yellowColor]];
+                }
+            }
+            
+            
+            marker.title = title;
             marker.snippet = [NSString stringWithFormat:@"[%d] %@",  mark.rating, [dict objectForKey:@"message"]];
             marker.map = mapView_;
             marker.userData = mark;
@@ -304,11 +314,11 @@
     //nav.navigationBar.topItem.title = @"Settings";
     
     
-        profileNameChange = [[UIAlertView alloc] initWithTitle:@"Insert Profile Name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
-        profileNameChange.alertViewStyle = UIAlertViewStylePlainTextInput;
-        [profileNameChange show];
-
-
+    profileNameChange = [[UIAlertView alloc] initWithTitle:@"Insert Profile Name" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
+    profileNameChange.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [profileNameChange show];
+    
+    
 }
 
 #pragma mark GO TO MAP
@@ -562,7 +572,7 @@
                     return;
                 }
             }
-
+            
         }
         
         //set to user and save
