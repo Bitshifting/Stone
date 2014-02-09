@@ -10,25 +10,23 @@
 #import "ViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
 #import <QuartzCore/QuartzCore.h>
-#import "ViewController.h"
 #import "Friend.h"
 #import "MBProgressHUD.h"
 
 @interface LeftViewController ()
-@property (weak) ViewController *vCont;
 @end
 
 @implementation LeftViewController {
+    NSString *tempName;
+    MBProgressHUD *HUD;
 }
 
-@synthesize table, arrOfFriends, addFriend, removeFriend;
+@synthesize table, arrOfFriends, addFriend, removeFriend, uid, url, viewCont;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        
-        _vCont = (ViewController*)[((UINavigationController*)self.slidingViewController.topViewController).viewControllers objectAtIndex:0];
         arrOfFriends = [[NSMutableArray alloc] init];
         UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         // Custom initialization
@@ -52,6 +50,8 @@
         table.dataSource = self;
         
         self.view = view;
+        HUD = [[MBProgressHUD alloc] initWithView:table];
+        [self.view addSubview:HUD];
     }
     return self;
 }
@@ -89,7 +89,7 @@
         }
         
         //if not already a friend, begin to add friend
-        NSData *data = [API addFriend:_vCont.url uid:_vCont.uid displayName:_vCont.profileName];
+        NSData *data = [API addFriend:url uid:uid displayName:frDispName];
         
         if(data != nil) {
             NSError* error;
@@ -99,16 +99,16 @@
                                   error:&error];
             
             if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                 
                 // Configure for text only and offset down
-                hud.mode = MBProgressHUDModeText;
-                hud.labelText = @"Added Follower!";
-                hud.margin = 10.f;
-                hud.yOffset = 150.f;
-                hud.removeFromSuperViewOnHide = YES;
+                HUD.mode = MBProgressHUDModeText;
+                HUD.labelText = @"Added Follower!";
+                HUD.margin = 10.f;
+                HUD.yOffset = 150.f;
+                HUD.removeFromSuperViewOnHide = YES;
                 
-                [hud hide:YES afterDelay:2];
+                [HUD hide:YES afterDelay:2];
                 
                 //refresh friends
                 [self reloadFriends];
@@ -126,7 +126,7 @@
         }
         
         //time to remove friend
-        NSData *data = [API delFriend:_vCont.url uid:_vCont.uid displayName:_vCont.profileName];
+        NSData *data = [API delFriend:url uid:uid displayName:tempName];
         
         if(data != nil) {
             NSError* error;
@@ -136,19 +136,21 @@
                                   error:&error];
             
             if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
-                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                HUD = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
                 
                 // Configure for text only and offset down
-                hud.mode = MBProgressHUDModeText;
-                hud.labelText = @"Removed Follower!";
-                hud.margin = 10.f;
-                hud.yOffset = 150.f;
-                hud.removeFromSuperViewOnHide = YES;
+                HUD.mode = MBProgressHUDModeText;
+                HUD.labelText = @"Removed Follower!";
+                HUD.margin = 10.f;
+                HUD.yOffset = 150.f;
+                HUD.removeFromSuperViewOnHide = YES;
                 
-                [hud hide:YES afterDelay:2];
+                [HUD hide:YES afterDelay:2];
                 
                 //refresh friends
                 [self reloadFriends];
+                
+                tempName = nil;
                 
                 
             }
@@ -195,7 +197,11 @@
         [view changeToSettings];
     }
     
-    NSLog(@"%i", indexPath.row);
+    tempName = [arrOfFriends objectAtIndex:indexPath.row];
+    
+    //set alert so one can type in friend's name
+    removeFriend = [[UIAlertView alloc] initWithTitle:[NSString stringWithFormat:@"Remove FolloweR: %@", tempName] message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Yes" , nil];
+    [removeFriend show];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
@@ -217,7 +223,7 @@
     [self.arrOfFriends removeAllObjects];
     
     //grab friends
-    NSData *data = [API getFriends:_vCont.url uid:_vCont.uid];
+    NSData *data = [API getFriends:url uid:uid];
     
     if(data != nil) {
         NSError* error;

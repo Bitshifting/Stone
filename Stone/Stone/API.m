@@ -106,7 +106,7 @@
 
 + (NSData*) getFriends:(NSString*)url uid:(NSString*)uid {
     [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
-    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/getFollowers/%@", url, uid]];
+    NSURL *urlSend =[NSURL URLWithString:[NSString stringWithFormat:@"%@/stoneapi/account/getFollowees/%@", url, uid]];
     NSError *requestError;
     NSLog(@"%@", [urlSend path]);
     NSURLResponse *urlResponse = nil;

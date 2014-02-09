@@ -39,6 +39,7 @@
     //create left view
     leftView.view.layer.backgroundColor = [UIColor whiteColor].CGColor;
     leftView.edgesForExtendedLayout = UIRectEdgeTop | UIRectEdgeBottom | UIRectEdgeLeft;
+    leftView.viewCont = topView;
     
     //set sliding view controller
     self.slidingVC = [ECSlidingViewController slidingWithTopViewController:_navCont];

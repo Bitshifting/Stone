@@ -25,6 +25,7 @@
     GMSMarker *tempMark;
     CLLocation *location;
     NSTimer *time;
+    LeftViewController *leftVC;
 }
 
 @synthesize locationManager, insertMsg, removeMark, rateMark, addMark, profileName, profileNameChange, url, arrMark, chooseMark, tempArr, uid;
@@ -102,7 +103,7 @@
     self.navigationItem.rightBarButtonItem = anchorRightButton;
     
     //set friends list
-    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"Friends" style:UIBarButtonItemStylePlain target:self action:
+    UIBarButtonItem *anchorLeftButton = [[UIBarButtonItem alloc] initWithTitle:@"See Friends" style:UIBarButtonItemStylePlain target:self action:
                                          @selector(anchorLeft)];
     
     self.navigationItem.leftBarButtonItem = anchorLeftButton;
@@ -116,8 +117,14 @@
     }
     
     //reload friends
-    LeftViewController *leftVC = (LeftViewController*)self.slidingViewController.underLeftViewController;
+    leftVC = (LeftViewController*)self.slidingViewController.underLeftViewController;
     [leftVC reloadFriends];
+    
+    leftVC.url = url;
+    leftVC.uid = uid;
+    
+    //set top to profile name
+    ((UINavigationController*)self.slidingViewController.topViewController).navigationBar.topItem.title = profileName;
     
 }
 
@@ -477,6 +484,8 @@
                 profileName = [[alertView textFieldAtIndex:0] text];
             } else if([profileName length] == 0) {
                 [self changeToSettings];
+            } else {
+                return;
             }
         }
         
@@ -544,12 +553,13 @@
                     
                     // Configure for text only and offset down
                     hud.mode = MBProgressHUDModeText;
-                    hud.labelText = @"Unable to change name. (Possibly Taken)";
+                    hud.labelText = @"Taken Username";
                     hud.margin = 10.f;
                     hud.yOffset = 150.f;
                     hud.removeFromSuperViewOnHide = YES;
                     
                     [hud hide:YES afterDelay:2];
+                    return;
                 }
             }
 
