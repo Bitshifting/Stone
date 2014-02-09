@@ -24,6 +24,7 @@
 @property (nonatomic, strong) NSMutableArray *arrMark;
 @property (nonatomic, strong) UIAlertView *chooseMark;
 @property (nonatomic, strong) NSMutableArray *tempArr;
+@property (nonatomic, strong) NSString *uid;
 
 - (void) changeToSettings;
 - (void) changeToMap;

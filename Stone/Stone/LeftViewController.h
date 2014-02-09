@@ -8,9 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LeftViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource>
+@interface LeftViewController : UIViewController  <UITableViewDelegate, UITableViewDataSource, UIAlertViewDelegate>
 
-@property UITableView *table;
-@property NSMutableArray *arrOfFriends;
+@property (strong, nonatomic) UITableView *table;
+@property (strong, nonatomic) NSMutableArray *arrOfFriends;
+@property (strong, nonatomic) UIAlertView *addFriend;
+@property (strong, nonatomic) UIAlertView *removeFriend;
+
+- (void) reloadFriends;
 
 @end

@@ -9,39 +9,58 @@
 #import "LeftViewController.h"
 #import "ViewController.h"
 #import "UIViewController+ECSlidingViewController.h"
+#import <QuartzCore/QuartzCore.h>
+#import "ViewController.h"
 #import "Friend.h"
+#import "MBProgressHUD.h"
 
 @interface LeftViewController ()
+@property (weak) ViewController *vCont;
 @end
 
 @implementation LeftViewController {
 }
 
-@synthesize table, arrOfFriends;
+@synthesize table, arrOfFriends, addFriend, removeFriend;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        _vCont = (ViewController*)[((UINavigationController*)self.slidingViewController.topViewController).viewControllers objectAtIndex:0];
         arrOfFriends = [[NSMutableArray alloc] init];
-        
+        UIView *view = [[UIView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
         // Custom initialization
-        table = [[UITableView alloc] initWithFrame:[[UIScreen mainScreen] bounds] style:UITableViewStylePlain];
+        table = [[UITableView alloc] initWithFrame:CGRectMake(0, 16, [[UIScreen mainScreen] bounds].size.width - 100,[[UIScreen mainScreen] bounds].size.height - 70) style:UITableViewStylePlain];
         
-        table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        //table.separatorStyle = UITableViewCellSeparatorStyleNone;
+        
+        
+        UIButton *button = [[UIButton alloc] initWithFrame:CGRectMake(0, [[UIScreen mainScreen] bounds].size.height - 50, [[UIScreen mainScreen] bounds].size.width - 100, 50)];
+        [button setTitle:@"Add Follower" forState:UIControlStateNormal];
+        [button setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+        [button setBackgroundColor:[UIColor colorWithRed:192.0f/255.0f green:192.0f/255.0f blue:192.0f/255.0f alpha:1.0]];
+        [button addTarget:self action:@selector(addFriendAlert) forControlEvents:UIControlEventTouchDown];
+        [view addSubview:table];
+        [view addSubview:button];
+        
+        [table setBackgroundColor:[UIColor clearColor]];
         
         table.delegate = self;
         table.dataSource = self;
         
-        //set the map as highlighted
-        NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection: 0];
-        
-        [table selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-        
-        self.view = table;
+        self.view = view;
     }
     return self;
+}
+
+- (void) addFriendAlert {
+    //set alert so one can type in friend's name
+    addFriend = [[UIAlertView alloc] initWithTitle:@"Add Friend" message:@"Friend Name:" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK" , nil];
+    addFriend.alertViewStyle = UIAlertViewStylePlainTextInput;
+    [addFriend show];
 }
 
 - (void)viewDidLoad
@@ -49,27 +68,100 @@
     [super viewDidLoad];
 }
 
+- (void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if([alertView isEqual:addFriend]) {
+        if(buttonIndex == 0) {
+            return;
+        }
+        
+        NSString *frDispName =[alertView textFieldAtIndex:0].text;
+        BOOL alreadyFriend = NO;
+        
+        for(Friend *fr in arrOfFriends) {
+            if([fr.displayName isEqualToString:frDispName]) {
+                alreadyFriend = YES;
+                break;
+            }
+        }
+        
+        if(alreadyFriend) {
+            return;
+        }
+        
+        //if not already a friend, begin to add friend
+        NSData *data = [API addFriend:_vCont.url uid:_vCont.uid displayName:_vCont.profileName];
+        
+        if(data != nil) {
+            NSError* error;
+            NSDictionary* json = [NSJSONSerialization
+                                  JSONObjectWithData:data
+                                  options:kNilOptions
+                                  error:&error];
+            
+            if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                
+                // Configure for text only and offset down
+                hud.mode = MBProgressHUDModeText;
+                hud.labelText = @"Added Follower!";
+                hud.margin = 10.f;
+                hud.yOffset = 150.f;
+                hud.removeFromSuperViewOnHide = YES;
+                
+                [hud hide:YES afterDelay:2];
+                
+                //refresh friends
+                [self reloadFriends];
+                
+                
+            }
+        }
+        
+        return;
+        
+        
+    } else if([alertView isEqual:removeFriend]) {
+        if(buttonIndex == 0) {
+            return;
+        }
+        
+        //time to remove friend
+        NSData *data = [API delFriend:_vCont.url uid:_vCont.uid displayName:_vCont.profileName];
+        
+        if(data != nil) {
+            NSError* error;
+            NSDictionary* json = [NSJSONSerialization
+                                  JSONObjectWithData:data
+                                  options:kNilOptions
+                                  error:&error];
+            
+            if([(NSNumber*)[json objectForKey:@"success"] isEqualToNumber:[NSNumber numberWithInt:1]]) {
+                MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                
+                // Configure for text only and offset down
+                hud.mode = MBProgressHUDModeText;
+                hud.labelText = @"Removed Follower!";
+                hud.margin = 10.f;
+                hud.yOffset = 150.f;
+                hud.removeFromSuperViewOnHide = YES;
+                
+                [hud hide:YES afterDelay:2];
+                
+                //refresh friends
+                [self reloadFriends];
+                
+                
+            }
+        }
+        
+        return;
+    }
+}
+
 //table view delegates
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     return [arrOfFriends count];
-}
-
-- (void) viewDidLayoutSubviews {
-    // only works for iOS 7+
-    if ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0) {
-        CGRect viewBounds = self.view.bounds;
-        CGFloat topBarOffset = self.topLayoutGuide.length;
-        
-        // snaps the view under the status bar (iOS 6 style)
-        viewBounds.origin.y = topBarOffset * -2;
-        
-        // shrink the bounds of your view to compensate for the offset
-        viewBounds.size.height = viewBounds.size.height + (topBarOffset * -2);
-        self.view.bounds = viewBounds;
-        self.view.backgroundColor = [UIColor whiteColor];
-        
-    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,8 +195,10 @@
         [view changeToSettings];
     }
     
+    NSLog(@"%i", indexPath.row);
+    
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-
+    
 }
 
 - (void)anchorLeft {
@@ -116,6 +210,29 @@
     } else {
         [self.slidingViewController resetTopViewAnimated:YES];
     }
+}
+
+- (void) reloadFriends {
+    //clear all friends
+    [self.arrOfFriends removeAllObjects];
+    
+    //grab friends
+    NSData *data = [API getFriends:_vCont.url uid:_vCont.uid];
+    
+    if(data != nil) {
+        NSError* error;
+        NSDictionary* json = [NSJSONSerialization
+                              JSONObjectWithData:data
+                              options:kNilOptions
+                              error:&error];
+        
+        for(NSDictionary *dict in json) {
+            Friend *tempFr = [[Friend alloc] initWithID:(NSString*)[dict objectForKey:@"_id"] displayName:(NSString*)[dict objectForKey:@"username"]];
+            [self.arrOfFriends addObject:tempFr];
+        }
+    }
+    
+    [self.table reloadData];
 }
 
 @end

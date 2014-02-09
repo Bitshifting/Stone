@@ -25,10 +25,9 @@
     GMSMarker *tempMark;
     CLLocation *location;
     NSTimer *time;
-    NSString *uid;
 }
 
-@synthesize locationManager, insertMsg, removeMark, rateMark, addMark, profileName, profileNameChange, url, arrMark, chooseMark, tempArr;
+@synthesize locationManager, insertMsg, removeMark, rateMark, addMark, profileName, profileNameChange, url, arrMark, chooseMark, tempArr, uid;
 
 #pragma mark INIT
 
@@ -74,7 +73,6 @@
     [insertMsg addTarget:self action:@selector(insertMessage:) forControlEvents:UIControlEventTouchDown];
     [insertMsg setTitle:@"Insert Msg" forState:UIControlStateNormal];
     [insertMsg.layer setBorderColor:[[UIColor blackColor] CGColor]];
-    [insertMsg.layer setBackgroundColor:[[UIColor grayColor] CGColor]];
     [insertMsg setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     [insertMsg.layer setBorderWidth:2.0f];
     insertMsg.layer.cornerRadius = 10;
@@ -117,27 +115,10 @@
         [self changeToSettings];
     }
     
-    //grab friends
-    NSData *data = [API getFriends:url uid:uid];
+    //reload friends
+    LeftViewController *leftVC = (LeftViewController*)self.slidingViewController.underLeftViewController;
+    [leftVC reloadFriends];
     
-    if(data != nil) {
-        NSError* error;
-        NSDictionary* json = [NSJSONSerialization
-                              JSONObjectWithData:data
-                              options:kNilOptions
-                              error:&error];
-        
-        for(NSDictionary *dict in json) {
-            Friend *tempFr = [[Friend alloc] initWithID:(NSString*)[dict objectForKey:@"_id"] displayName:(NSString*)[dict objectForKey:@"username"]];
-            LeftViewController *left = (LeftViewController*) self.slidingViewController.underLeftViewController;
-            [left.arrOfFriends addObject:tempFr];
-        }
-    }
-    
-    Friend *fr = [[Friend alloc] initWithID:@"HERP" displayName:@"DERP"];
-    LeftViewController *left = (LeftViewController*) self.slidingViewController.underLeftViewController;
-    [left.arrOfFriends addObject:fr];
-    [left.table reloadData];
 }
 
 -(BOOL)shouldAutorotate
@@ -209,8 +190,6 @@
 
 - (void) insertMessage:(UIButton*) button {
     button.selected = YES;
-    //change color on background
-    [button setBackgroundColor:[UIColor lightGrayColor]];
     
     //time to pop up new view controller
     addMark = [[UIAlertView alloc] initWithTitle:@"Message" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Ok", nil];
